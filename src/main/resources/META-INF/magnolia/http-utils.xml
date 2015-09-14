@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module SYSTEM "module.dtd" >
+<module>
+  <name>magnolia-http-utils</name>
+  <displayName>${project.name}</displayName>
+  <description>${project.description}</description>
+  <class>info.magnolia.services.httputils.HttpUtilsModule</class>
+  <version>${project.version}</version>
+
+  <components>
+    <id>main</id>
+
+
+    <component>
+      <type>javax.ws.rs.client.Client</type>
+      <implementation>javax.ws.rs.client.Client</implementation>
+      <provider>info.magnolia.services.httputils.HttpUtilsModule$ClientProvider</provider>
+      <scope>singleton</scope>
+    </component>
+
+    <component>
+      <type>info.magnolia.services.httputils.functions.HttpTemplatingFunctions</type>
+      <implementation>info.magnolia.services.httputils.functions.HttpTemplatingFunctions</implementation>
+      <scope>singleton</scope>
+    </component>
+
+    <component>
+      <type>info.magnolia.services.httputils.definitions.ServiceDefinitionRegistry</type>
+      <implementation>info.magnolia.services.httputils.definitions.ServiceDefinitionRegistry</implementation>
+    </component>
+
+    <component>
+      <type>info.magnolia.services.httputils.HttpService$HttpServiceFactory</type>
+      <implementation>info.magnolia.services.httputils.HttpService$HttpServiceFactory</implementation>
+    </component>
+
+
+
+  </components>
+
+  <dependencies>
+    <dependency>
+      <name>core</name>
+      <version>5.4.1/*</version>
+    </dependency>
+    <dependency>
+      <name>rendering</name>
+      <version>5.4.1/*</version>
+    </dependency>
+  <!-- Add other dependencies here, e.g the standard-templating-kit, or the multisite module with the enterprise edition. -->
+  <!--
+    <dependency>
+      <name>standard-templating-kit</name>
+      <version>2.7/*</version>
+    </dependency>
+    <dependency>
+      <name>multisite</name>
+      <version>1.0/*</version>
+    </dependency>
+  -->
+  </dependencies>
+</module>

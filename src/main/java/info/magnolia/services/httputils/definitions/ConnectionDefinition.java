@@ -30,15 +30,40 @@
  * Any modifications to this file must keep this entire header
  * intact.
  */
-package info.magnolia.services.restutils.app.contentconnector;
+package info.magnolia.services.httputils.definitions;
 
 
-import info.magnolia.ui.vaadin.integration.contentconnector.ContentConnector;
+public class ConnectionDefinition {
+    public static final String TYPE_ENV  = "env";
+    public static final String TYPE_PROP = "prop";
+    public static final String TYPE_VALUE  = "value";
+    private String host;
+    private String port;
+    private String type;
 
-import com.vaadin.data.Container;
+    public String getHost() {
+        return host;
+    }
 
-public interface HttpContentConnector extends ContentConnector {
+    public void setHost(String host) {
+        this.host = host;
+    }
 
-      Container getContainer();
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
 
 }

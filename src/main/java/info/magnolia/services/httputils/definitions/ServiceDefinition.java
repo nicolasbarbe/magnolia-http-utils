@@ -30,29 +30,25 @@
  * Any modifications to this file must keep this entire header
  * intact.
  */
-package info.magnolia.services.restutils.app.workbench;
+package info.magnolia.services.httputils.definitions;
 
-import info.magnolia.objectfactory.ComponentProvider;
-import info.magnolia.services.restutils.app.contentconnector.HttpContentConnector;
-import info.magnolia.ui.vaadin.integration.contentconnector.ContentConnector;
-import info.magnolia.ui.workbench.list.ListPresenter;
-import info.magnolia.ui.workbench.list.ListView;
+public class ServiceDefinition {
+    private ConnectionDefinition connection;
+    private String apiVersion;
 
-import javax.inject.Inject;
-
-import com.vaadin.data.Container;
-
-public class HttpResourceListPresenter extends ListPresenter {
-    private final HttpContentConnector connector;
-
-    @Inject
-    public HttpResourceListPresenter(ListView view, ComponentProvider componentProvider, ContentConnector connector) {
-        super(view, componentProvider);
-        this.connector = (HttpContentConnector) connector;
+    public String getApiVersion() {
+        return apiVersion;
     }
 
-    @Override
-    protected Container initializeContainer() {
-           return connector.getContainer();
+    public void setApiVersion(String apiVersion) {
+        this.apiVersion = apiVersion;
+    }
+
+    public ConnectionDefinition getConnection() {
+        return connection;
+    }
+
+    public void setConnection(ConnectionDefinition connection) {
+        this.connection = connection;
     }
 }
