@@ -51,4 +51,5 @@ public class HttpContentConnectorDefinition extends ConfiguredContentConnectorDe
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
     }
+
 }

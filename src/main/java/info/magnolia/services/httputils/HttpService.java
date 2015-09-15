@@ -46,6 +46,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -54,16 +55,32 @@ public class HttpService {
 
     private WebTarget target;
 
+
+    @Inject
     public HttpService(ServiceDefinitionRegistry registry, Client client, String service) {
         ServiceDefinition definition = registry.query().named(service).findSingle().get();
         String cs = resolveConnectionString(definition);
+        // todo put this logic elsewhere
+        String resource = definition.getResource();
 
-        this.target = client.target(cs).path("api").path(definition.getApiVersion());
+        this.target = client.target(cs).path("api").path(definition.getApiVersion()).path(resource);
     }
 
-    public Object GET(String resource) {
 
-        Response response =  this.target.path(resource).request(MediaType.APPLICATION_JSON).get();
+    public Object GET() {
+        return this.GET("");
+    }
+
+    // todo remove parameter, it must be defined in the registry instead
+    public Object GET(String id) {
+
+        Response response;
+        if(StringUtils.isNotBlank(id)) {
+            response =  this.target.path(id).request(MediaType.APPLICATION_JSON).get();
+        } else {
+            response =  this.target.request(MediaType.APPLICATION_JSON).get();
+        }
+
 
         if (response.getStatus() != 200) {
             throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());

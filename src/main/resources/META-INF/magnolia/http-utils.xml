@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE module SYSTEM "module.dtd" >
 <module>
-  <name>magnolia-http-utils</name>
+  <name>http-utils</name>
   <displayName>${project.name}</displayName>
   <description>${project.description}</description>
   <class>info.magnolia.services.httputils.HttpUtilsModule</class>
@@ -27,6 +27,7 @@
     <component>
       <type>info.magnolia.services.httputils.definitions.ServiceDefinitionRegistry</type>
       <implementation>info.magnolia.services.httputils.definitions.ServiceDefinitionRegistry</implementation>
+      <scope>singleton</scope>
     </component>
 
     <component>

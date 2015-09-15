@@ -63,6 +63,7 @@ public class HttpResourceFlatContainer extends AbstractContainer implements Cont
     private Map<Object, Class> properties = new HashMap<Object, Class>();
     private Map<String, HttpResourceItem> cache = new LinkedHashMap<String, HttpResourceItem>();
 
+
     public HttpResourceFlatContainer(HttpService service) {
         this.service = service;
         configure();
@@ -246,7 +247,7 @@ public class HttpResourceFlatContainer extends AbstractContainer implements Cont
     }
 
     private void loadAll() {
-        List resourceList = (List) this.service.GET("discussions");
+        List resourceList = (List) this.service.GET();
         for(Object resource : resourceList ) {
             if(resource instanceof Map){
                 Object objectId =  ((Map) resource).get("id");

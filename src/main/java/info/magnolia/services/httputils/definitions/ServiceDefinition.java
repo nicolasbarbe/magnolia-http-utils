@@ -35,6 +35,7 @@ package info.magnolia.services.httputils.definitions;
 public class ServiceDefinition {
     private ConnectionDefinition connection;
     private String apiVersion;
+    private String resource;
 
     public String getApiVersion() {
         return apiVersion;
@@ -50,5 +51,13 @@ public class ServiceDefinition {
 
     public void setConnection(ConnectionDefinition connection) {
         this.connection = connection;
+    }
+
+    public String getResource() {
+        return resource;
+    }
+
+    public void setResource(String resource) {
+        this.resource = resource;
     }
 }
